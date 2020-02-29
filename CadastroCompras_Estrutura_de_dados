@@ -1,0 +1,62 @@
+
+package cadastrocompras_estrutura_de_dados;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class CadastroCompras_Estrutura_de_dados {
+  public static void main(String[] args) {
+      Scanner entrada = new Scanner(System.in);
+      //variavel tipo Produtos
+      Produto  p;
+      //Criando Uma Lista Encadeada de produtos
+      LinkedList<Produto> lista = new LinkedList<Produto>();
+      int op;
+      
+      do{
+          System.out.println("-----Menu-----");
+          System.out.println("1 - Inserir prdutos");
+          System.out.println("2 - Consultar Produtos");
+          System.out.println("3 - Remover elementos da Lista");
+          System.out.println("4 - Sair");
+          System.out.println("Digite a sua opção");
+          op = Integer.parseInt(entrada.nextLine());
+          //Opção
+          if(op == 1) {
+              System.out.printf("Inserindo Produto");
+              p = new Produto();
+              
+              System.out.printf("Digite o nome do produto:");
+              p.nome = entrada.nextLine();
+              
+              System.out.println("Digite a quantidade de produtos:");
+              p.quantidade = Integer.parseInt(entrada.nextLine());
+              lista.add(p);
+          }else if (op == 2) {
+              System.out.println("\nListando Produto ");
+              if(lista.isEmpty()) {
+                  System.out.println("Lista vazia!");
+              }else {
+                  for(Produto consulta : lista) {
+                      System.out.println("Produto: " + consulta.nome);
+                      System.out.println("Quantidade "+ consulta.quantidade);
+                  }
+              }
+          }else if (op == 3){
+              System.out.println("\nRemovendo Produto");
+              if(lista.isEmpty()) {
+                  System.out.println("Lista vazia");
+              }else{
+                  System.out.println("Nome do produto para remoção: ");
+                  String nomepad = entrada.nextLine();
+                  for(Produto remocao : lista) {
+                      if(remocao.nome.equals(nomepad)) {
+                          lista.remove(remocao);
+                      }
+                  }
+              }
+          }
+      }while(op != 4);
+  }
+    
+}
