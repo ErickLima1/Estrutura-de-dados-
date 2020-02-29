@@ -1,0 +1,8 @@
+
+package cadastrocompras_estrutura_de_dados;
+
+public class Produto {
+    public String nome;
+    public int quantidade;
+
+}
